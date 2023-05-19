@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>تقدير الطلاب</title>
+	<style>
+		*{
+			padding: 0;
+			/* margin: 0; */
+			box-sizing: border-box;
+		}
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+		}
+		h1 {
+			text-align: center;
+			color: #333;
+		}
+		form {
+			width: 400px;
+			margin: 0 auto;
+			background-color: #fff;
+			padding: 20px;
+			border-radius: 5px;
+			box-shadow: 0 0 10px rgba(0,0,0,0.3);
+			
+		}
+		label {
+			display: block;
+			margin-bottom: 10px;
+			font-weight: bold;
+			color: #333;
+		}
+		input[type="number"] {
+			padding: 10px;
+			border-radius: 3px;
+			border: none;
+			box-shadow: 0 0 5px rgba(0,0,0,0.1);
+			width: 100%;
+			margin-bottom: 20px;
+			padding-right: 20px;
+		}
+		button[type="submit"] {
+			padding: 10px 20px;
+			background-color: #333;
+			color: #fff;
+			border: none;
+			border-radius: 3px;
+			cursor: pointer;
+			margin-right: 5px;
+			padding-right: 20px;
+			
+
+		}
+		p {
+			text-align: center;
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			margin-top: 40px;
+		}
+		.excellent {
+			color: green;
+		}
+		.very-good {
+			color: blue;
+		}
+		.poor {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>تقدير الطلاب</h1>
+	<form onsubmit="return calculateGrade()">
+		<label>الدرجة الأولى:</label>
+		<input type="number" id="grade1" required>
+		<label>الدرجة الثانية:</label>
+		<input type="number" id="grade2" required>
+		<label>الدرجة الثالثة:</label>
+		<input type="number"id="grade3" required>
+		<button type="submit">حساب التقدير</button>
+	</form>
+	<p id="result"></p>
+
+	<script>
+		function calculateGrade() {
+			var grade1 = parseInt(document.getElementById("grade1").value);
+			var grade2 = parseInt(document.getElementById("grade2").value);
+			var grade3 = parseInt(document.getElementById("grade3").value);
+
+			var total = grade1 + grade2 + grade3;
+			var average = total / 3;
+
+			if (average >= 90) {
+				document.getElementById("result").innerHTML = "التقدير: ممتاز";
+				document.getElementById("result").classList.add("excellent");
+			} else if (average >= 80 && average < 90) {
+				document.getElementById("result").innerHTML = "التقدير: جيد جداً";
+				document.getElementById("result").classList.add("very-good");
+			} else {
+				document.getElementById("result").innerHTML = "التقدير: سيئ";
+				document.getElementById("result").classList.add("poor");
+			}
+
+			return false;
+		}
+		alert(" , استاذنا الفاصل : يتم برمجة هذا المشروع بناءا علي انه اخد ثلاث امتحانات في مدرسته . ليحسن من مستواه . اشكرك علي دخول موقعنا ويكون هذا تقديره !")
+	</script>
+</body>
+</html>
